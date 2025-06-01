@@ -214,7 +214,7 @@ export default function LoginPage() {
               {/* Replace this with your stunning pizza dashboard preview image */}
               <div className="relative">
                 <img 
-                  src="" 
+                  src="/dashboard.png"
                   alt="Pieza Dashboard Preview"
                   className="w-full h-[250px] object-cover rounded-2xl shadow-2xl border border-[#2A2E1F]/10"
                 />
