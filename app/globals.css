@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Chewy&display=swap');
+
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -115,8 +117,19 @@
 @layer base {
   * {
     @apply border-border outline-ring/50;
+      font-family: 'Chewy', cursive;
+
   }
   body {
     @apply bg-background text-foreground;
+      font-family: 'Chewy', cursive;
+
   }
+}
+.body {
+  font-family: 'Chewy', cursive;
+  letter-spacing: 0.2em;
+}
+.crazzy {
+  font-family: 'Chewy', cursive;
 }

@@ -37,8 +37,8 @@ export function getStatusColor(status: OrderStatus): string {
 
 export function sortOrders(orders: PizzaOrder[], config: SortConfig): PizzaOrder[] {
   return [...orders].sort((a, b) => {
-    let aValue = a[config.key];
-    let bValue = b[config.key];
+    let aValue:any = a[config.key];
+    let bValue:any = b[config.key];
 
     // Handle date sorting
     if (config.key === 'orderDate') {

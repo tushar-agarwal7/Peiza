@@ -1,88 +1,123 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Pizza, ChefHat, Clock, Star } from 'lucide-react';
+import { Pizza, ChefHat, Clock, Star, Sparkles, ArrowLeft, Shield, Zap } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 import LoginButton from '@/components/auth/LoginButton';
 
 export default function LoginPage() {
+  const router = useRouter();
+
   const features = [
     {
       icon: Pizza,
-      title: 'Order Management',
-      description: 'Track and manage all pizza orders in real-time'
+      title: 'Smart Order Management',
+      description: 'Track every pizza from order to delivery with intelligent workflow automation'
     },
     {
       icon: ChefHat,
-      title: 'Kitchen Dashboard',
-      description: 'Monitor preparation status and delivery times'
+      title: 'Kitchen Intelligence',
+      description: 'Optimize preparation times and reduce waste with AI-powered insights'
     },
     {
       icon: Clock,
-      title: 'Real-time Updates',
-      description: 'Get instant notifications on order status changes'
+      title: 'Real-time Analytics',
+      description: 'Monitor performance metrics and customer satisfaction in real-time'
     },
     {
-      icon: Star,
-      title: 'Analytics',
-      description: 'Comprehensive insights into your pizza business'
+      icon: Shield,
+      title: 'Enterprise Security',
+      description: 'Bank-grade security protecting your business data and customer information'
     }
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary-50 via-white to-primary-100">
-      <div className="flex min-h-screen">
-        {/* Left side - Hero Section */}
+    <div className="min-h-screen bg-[#F2F0E9] relative overflow-hidden">
+      {/* Subtle Background Pattern */}
+      <div className="absolute inset-0 opacity-[0.03]">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='30' cy='30' r='1.5' fill='%232A2E1F'/%3E%3C/svg%3E")`,
+          backgroundSize: '60px 60px'
+        }}></div>
+      </div>
+
+      <div className="relative z-10 flex min-h-screen">
+        {/* Left side - Features Section */}
         <div className="hidden lg:flex lg:w-1/2 relative overflow-hidden">
-          <div className="absolute inset-0 gradient-bg opacity-90"></div>
-          <div className="relative z-10 flex flex-col justify-center items-center p-12 text-white">
+          <div className="flex flex-col justify-center items-start p-16 w-full">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="text-center"
+              className="w-full max-w-lg"
             >
-              <div className="flex items-center justify-center mb-8">
-                <div className="bg-white/20 p-4 rounded-2xl backdrop-blur-sm">
-                  <Pizza className="h-16 w-16 text-white" />
+              <motion.div
+                className="flex items-center mb-12"
+                whileHover={{ scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 400 }}
+              >
+                <div className="bg-[#2A2E1F] p-4 rounded-2xl shadow-lg mr-4">
+                  <Pizza className="h-10 w-10 text-[#F2F0E9]" />
                 </div>
-              </div>
-              <h1 className="text-5xl font-bold mb-6">
-                Welcome to
-                <br />
-                <span className="bg-gradient-to-r from-yellow-200 to-yellow-400 bg-clip-text text-transparent">
-                  Pieza
-                </span>
-              </h1>
-              <p className="text-xl text-white/90 mb-12 max-w-lg">
-                Your ultimate pizza order management dashboard. Track orders, manage deliveries, and grow your business.
+                <div>
+                  <h1 className="text-4xl font-black text-[#2A2E1F] tracking-tight">Pieza</h1>
+                  <p className="text-[#2A2E1F]/70 text-lg">Management Platform</p>
+                </div>
+              </motion.div>
+              
+              <h2 className="text-4xl lg:text-5xl font-black text-[#2A2E1F] mb-8 leading-tight tracking-tight">
+                Welcome to the Future of
+                <span className="block text-[#2A2E1F]/80">Pizza Business</span>
+              </h2>
+              
+              <p className="text-xl text-[#2A2E1F]/70 mb-12 leading-relaxed">
+                Join thousands of successful pizza businesses using our{' '}
+                <span className="text-[#2A2E1F] font-semibold">intelligent platform</span>{' '}
+                to streamline operations and boost customer satisfaction.
               </p>
               
-              <div className="grid grid-cols-2 gap-6 max-w-lg">
+              <div className="grid grid-cols-1 gap-8">
                 {features.map((feature, index) => (
                   <motion.div
                     key={feature.title}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.2 + index * 0.1 }}
-                    className="glass-effect rounded-xl p-4 text-center"
+                    transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
+                    whileHover={{ scale: 1.02, x: 5 }}
+                    className="flex items-start space-x-4 p-6 bg-white/60 backdrop-blur-sm rounded-2xl border border-[#2A2E1F]/10 hover:bg-white/80 transition-all duration-300 shadow-sm hover:shadow-lg"
                   >
-                    <feature.icon className="h-8 w-8 text-white mx-auto mb-3" />
-                    <h3 className="font-semibold text-white mb-2">{feature.title}</h3>
-                    <p className="text-sm text-white/80">{feature.description}</p>
+                    <motion.div
+                      whileHover={{ rotate: 360 }}
+                      transition={{ duration: 0.6 }}
+                      className="bg-[#2A2E1F] p-3 rounded-xl shadow-lg"
+                    >
+                      <feature.icon className="h-6 w-6 text-[#F2F0E9]" />
+                    </motion.div>
+                    <div>
+                      <h3 className="font-bold text-[#2A2E1F] mb-2 text-lg">{feature.title}</h3>
+                      <p className="text-[#2A2E1F]/70 leading-relaxed">{feature.description}</p>
+                    </div>
                   </motion.div>
                 ))}
               </div>
             </motion.div>
           </div>
-          
-          {/* Decorative elements */}
-          <div className="absolute top-10 right-10 w-32 h-32 bg-white/10 rounded-full blur-xl"></div>
-          <div className="absolute bottom-10 left-10 w-40 h-40 bg-yellow-400/20 rounded-full blur-2xl"></div>
-          <div className="absolute top-1/2 right-1/4 w-24 h-24 bg-white/5 rounded-full blur-lg"></div>
         </div>
 
         {/* Right side - Login Form */}
-        <div className="w-full lg:w-1/2 flex items-center justify-center p-8">
+        <div className="w-full lg:w-1/2 flex items-center justify-center p-8 relative">
+          {/* Back Button */}
+          <motion.button
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            onClick={() => router.push('/')}
+            className="absolute top-8 left-8 flex items-center space-x-2 text-[#2A2E1F]/70 hover:text-[#2A2E1F] transition-colors group font-medium"
+          >
+            <ArrowLeft className="h-5 w-5 group-hover:-translate-x-1 transition-transform" />
+            <span>Back to Home</span>
+          </motion.button>
+
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -90,59 +125,116 @@ export default function LoginPage() {
             className="w-full max-w-md"
           >
             {/* Mobile logo */}
-            <div className="lg:hidden text-center mb-8">
-              <div className="inline-flex items-center space-x-3 mb-4">
-                <div className="bg-gradient-to-r from-primary-500 to-primary-600 p-3 rounded-xl">
-                  <Pizza className="h-8 w-8 text-white" />
+            <div className="lg:hidden text-center mb-12">
+              <motion.div
+                className="inline-flex items-center space-x-3 mb-6"
+                whileHover={{ scale: 1.02 }}
+              >
+                <div className="bg-[#2A2E1F] p-4 rounded-2xl shadow-lg">
+                  <Pizza className="h-8 w-8 text-[#F2F0E9]" />
                 </div>
-                <h1 className="text-3xl font-bold text-gray-900">Pieza</h1>
-              </div>
-              <p className="text-gray-600">Manage your pizza orders with ease</p>
+                <h1 className="text-3xl font-black text-[#2A2E1F] tracking-tight">
+                  Pieza
+                </h1>
+              </motion.div>
+              <p className="text-[#2A2E1F]/70 text-lg">Manage your pizza business with intelligence</p>
             </div>
 
-            <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
-              <div className="text-center mb-8">
-                <h2 className="text-3xl font-bold text-gray-900 mb-2">Welcome Back</h2>
-                <p className="text-gray-600">Sign in to access your dashboard</p>
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="bg-white/80 backdrop-blur-md rounded-3xl shadow-2xl p-10 border border-[#2A2E1F]/10"
+            >
+              <div className="text-center mb-10">
+                <h2 className="text-3xl font-black text-[#2A2E1F] mb-3 tracking-tight">Welcome Back</h2>
+                <p className="text-[#2A2E1F]/70 text-lg">Sign in to access your intelligent dashboard</p>
               </div>
 
               <div className="space-y-6">
-                <LoginButton />
+                <motion.div
+                  whileHover={{ scale: 1.01 }}
+                  whileTap={{ scale: 0.99 }}
+                >
+                  <LoginButton />
+                </motion.div>
                 
                 <div className="text-center">
-                  <p className="text-sm text-gray-500">
+                  <p className="text-sm text-[#2A2E1F]/60">
                     By signing in, you agree to our{' '}
-                    <a href="#" className="text-primary-600 hover:text-primary-500 font-medium">
+                    <a href="#" className="text-[#2A2E1F] hover:text-[#2A2E1F]/80 font-medium transition-colors underline">
                       Terms of Service
                     </a>{' '}
                     and{' '}
-                    <a href="#" className="text-primary-600 hover:text-primary-500 font-medium">
+                    <a href="#" className="text-[#2A2E1F] hover:text-[#2A2E1F]/80 font-medium transition-colors underline">
                       Privacy Policy
                     </a>
                   </p>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
-            {/* Stats */}
+            {/* Trust Indicators */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="mt-8 grid grid-cols-3 gap-4 text-center"
+              className="mt-10 grid grid-cols-3 gap-6 text-center"
             >
-              <div className="bg-white/60 backdrop-blur-sm rounded-xl p-4 border border-white/20">
-                <div className="text-2xl font-bold text-primary-600">1000+</div>
-                <div className="text-sm text-gray-600">Orders Processed</div>
+              <motion.div
+                whileHover={{ scale: 1.05, y: -3 }}
+                className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-[#2A2E1F]/10 shadow-sm hover:shadow-lg transition-all duration-300"
+              >
+                <div className="text-2xl font-black text-[#2A2E1F]">50K+</div>
+                <div className="text-sm text-[#2A2E1F]/70 font-medium">Orders Processed</div>
+              </motion.div>
+              <motion.div
+                whileHover={{ scale: 1.05, y: -3 }}
+                className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-[#2A2E1F]/10 shadow-sm hover:shadow-lg transition-all duration-300"
+              >
+                <div className="text-2xl font-black text-[#2A2E1F]">99.9%</div>
+                <div className="text-sm text-[#2A2E1F]/70 font-medium">Uptime</div>
+              </motion.div>
+              <motion.div
+                whileHover={{ scale: 1.05, y: -3 }}
+                className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-[#2A2E1F]/10 shadow-sm hover:shadow-lg transition-all duration-300"
+              >
+                <div className="text-2xl font-black text-[#2A2E1F]">24/7</div>
+                <div className="text-sm text-[#2A2E1F]/70 font-medium">Support</div>
+              </motion.div>
+            </motion.div>
+
+            {/* Hero Image Section */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1, delay: 0.6 }}
+              className="mt-10 text-center"
+            >
+              {/* Replace this with your stunning pizza dashboard preview image */}
+              <div className="relative">
+                <img 
+                  src="" 
+                  alt="Pieza Dashboard Preview"
+                  className="w-full h-[250px] object-cover rounded-2xl shadow-2xl border border-[#2A2E1F]/10"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#2A2E1F]/10 to-transparent rounded-2xl"></div>
+                
+                {/* Floating Badge */}
+                <motion.div
+                  className="absolute -top-3 -right-3 bg-[#2A2E1F] text-[#F2F0E9] px-3 py-1 rounded-full text-sm font-bold shadow-lg"
+                  animate={{ 
+                    y: [0, -5, 0],
+                  }}
+                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  <Sparkles className="h-4 w-4 inline mr-1" />
+                  Live Demo
+                </motion.div>
               </div>
-              <div className="bg-white/60 backdrop-blur-sm rounded-xl p-4 border border-white/20">
-                <div className="text-2xl font-bold text-primary-600">99.9%</div>
-                <div className="text-sm text-gray-600">Uptime</div>
-              </div>
-              <div className="bg-white/60 backdrop-blur-sm rounded-xl p-4 border border-white/20">
-                <div className="text-2xl font-bold text-primary-600">24/7</div>
-                <div className="text-sm text-gray-600">Support</div>
-              </div>
+              <p className="mt-4 text-[#2A2E1F]/70 font-medium">
+                Get a preview of your powerful dashboard
+              </p>
             </motion.div>
           </motion.div>
         </div>

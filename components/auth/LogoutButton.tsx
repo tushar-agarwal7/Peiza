@@ -17,7 +17,7 @@ export default function LogoutButton({ variant = 'ghost', className }: LogoutBut
   const handleSignOut = async () => {
     setLoading(true);
     try {
-      await signOut({ callbackUrl: '/login' });
+      await signOut({ callbackUrl: '/' });
       toast.success('Signed out successfully');
     } catch (error) {
       console.error('Sign out error:', error);

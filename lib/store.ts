@@ -91,15 +91,27 @@ export const useOrderStore = create<OrderStore>()(
             });
           }
 
-          // Apply sorting
+          // Apply sorting with proper type safety
           filtered.sort((a, b) => {
-            let aValue = a[sortConfig.key];
-            let bValue = b[sortConfig.key];
+            let aValue: any = a[sortConfig.key];
+            let bValue: any = b[sortConfig.key];
+
+            // Handle undefined values
+            if (aValue === undefined && bValue === undefined) return 0;
+            if (aValue === undefined) return sortConfig.direction === 'asc' ? -1 : 1;
+            if (bValue === undefined) return sortConfig.direction === 'asc' ? 1 : -1;
 
             // Handle date sorting
             if (sortConfig.key === 'orderDate') {
-              aValue = new Date(aValue as string).getTime();
-              bValue = new Date(bValue as string).getTime();
+              const aTime = new Date(aValue as string).getTime();
+              const bTime = new Date(bValue as string).getTime();
+              
+              if (isNaN(aTime) && isNaN(bTime)) return 0;
+              if (isNaN(aTime)) return sortConfig.direction === 'asc' ? -1 : 1;
+              if (isNaN(bTime)) return sortConfig.direction === 'asc' ? 1 : -1;
+              
+              aValue = aTime;
+              bValue = bTime;
             }
 
             // Handle string sorting
@@ -108,6 +120,14 @@ export const useOrderStore = create<OrderStore>()(
               bValue = bValue.toLowerCase();
             }
 
+            // Handle number sorting
+            if (typeof aValue === 'number' && typeof bValue === 'number') {
+              if (isNaN(aValue) && isNaN(bValue)) return 0;
+              if (isNaN(aValue)) return sortConfig.direction === 'asc' ? -1 : 1;
+              if (isNaN(bValue)) return sortConfig.direction === 'asc' ? 1 : -1;
+            }
+
+            // Perform comparison
             if (aValue < bValue) {
               return sortConfig.direction === 'asc' ? -1 : 1;
             }
@@ -141,8 +161,7 @@ export const useOrderStore = create<OrderStore>()(
   )
 );
 
-
-
+// Fixed computed selectors with proper memoization
 export const useOrderStats = () => {
   const orders = useOrderStore(state => state.orders);
   
@@ -156,7 +175,7 @@ export const useOrderStats = () => {
     
     const totalRevenue = orders
       .filter(o => o.status === 'Delivered')
-      .reduce((sum, order) => sum + order.price, 0);
+      .reduce((sum, order) => sum + (order.price || 0), 0);
 
     return {
       total,
@@ -196,7 +215,7 @@ export const useCancelledCount = () => useOrderStore(state =>
 export const useTotalRevenue = () => useOrderStore(state => 
   state.orders
     .filter(o => o.status === 'Delivered')
-    .reduce((sum, order) => sum + order.price, 0)
+    .reduce((sum, order) => sum + (order.price || 0), 0)
 );
 
 // Filtered orders selector
