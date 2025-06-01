@@ -7,10 +7,10 @@ import ToastProvider from '@/components/providers/ToastProvider';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'PizzaFlow Dashboard',
+  title: 'Pieza Dashboard',
   description: 'Modern pizza order management dashboard',
   keywords: ['pizza', 'orders', 'dashboard', 'management'],
-  authors: [{ name: 'PizzaFlow Team' }],
+  authors: [{ name: 'Pieza Team' }],
   viewport: 'width=device-width, initial-scale=1',
 };
 

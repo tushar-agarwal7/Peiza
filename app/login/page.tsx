@@ -50,7 +50,7 @@ export default function LoginPage() {
                 Welcome to
                 <br />
                 <span className="bg-gradient-to-r from-yellow-200 to-yellow-400 bg-clip-text text-transparent">
-                  PizzaFlow
+                  Pieza
                 </span>
               </h1>
               <p className="text-xl text-white/90 mb-12 max-w-lg">
@@ -95,7 +95,7 @@ export default function LoginPage() {
                 <div className="bg-gradient-to-r from-primary-500 to-primary-600 p-3 rounded-xl">
                   <Pizza className="h-8 w-8 text-white" />
                 </div>
-                <h1 className="text-3xl font-bold text-gray-900">PizzaFlow</h1>
+                <h1 className="text-3xl font-bold text-gray-900">Pieza</h1>
               </div>
               <p className="text-gray-600">Manage your pizza orders with ease</p>
             </div>
