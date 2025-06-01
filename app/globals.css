@@ -126,10 +126,14 @@
 
   }
 }
-.body {
-  font-family: 'Chewy', cursive;
-  letter-spacing: 0.2em;
-}
+
+ body {
+    /* Default to Inter, but allow override */
+    font-family: var(--font-inter), system-ui, sans-serif;
+  }
+
+/* Keep your custom classes but update font references */
 .crazzy {
-  font-family: 'Chewy', cursive;
+  font-family: var(--font-chewy), 'Comic Sans MS', cursive, system-ui;
+  letter-spacing: 0.2em;
 }
